@@ -1,0 +1,19 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "deshi bazar server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Porgramming-Hero-web-course/full-stack-server-shafiimam.git"
+  },
+  "author": "shafi imam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Porgramming-Hero-web-course/full-stack-server-shafiimam/issues"
+  },
+  "homepage": "https://github.com/Porgramming-Hero-web-course/full-stack-server-shafiimam#readme"
+}
