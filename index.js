@@ -71,7 +71,13 @@ client.connect((err) => {
         });
     }
   });
-  app.delete("/admin/deleteProduct", (req, res) => {});
+  app.get("/admin/deleteProduct/:key", (req, res) => {
+    console.log(req.params.key)
+    productsCollection.deleteOne({key:req.params.key})
+    .then(result =>{
+      res.send(result.deletedCount> 0)
+    })
+  });
 });
 
 app.get("/", (req, res) => {
