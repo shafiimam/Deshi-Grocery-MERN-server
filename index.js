@@ -24,18 +24,20 @@ client.connect((err) => {
   const ordersCollection = client.db("deshi-bazar").collection("orders");
   console.log("database connected successfully");
 
+//for adding new product
   app.post("/admin/addProduct", (req, res) => {
     const newProduct = req.body;
     console.log("adding product", req.body);
     productsCollection.insertOne(newProduct).then((result) => {});
   });
 
+//for getting all the products
   app.get("/products", (req, res) => {
     productsCollection.find({}).toArray((err, documents) => {
       res.send(documents);
     });
   });
-
+//for getting product by key
   app.get("/product/:key", (req, res) => {
     productsCollection
       .find({ key: req.params.key })
@@ -43,7 +45,7 @@ client.connect((err) => {
         res.status(200).send(documents[0]);
       });
   });
-
+// for order place
   app.post("/addOrder", (req, res) => {
     const order = req.body;
     ordersCollection.insertOne(order).then((result) => {
@@ -51,6 +53,7 @@ client.connect((err) => {
       res.send(result.insertedCount > 0);
     });
   });
+//for getting all the orders
   app.get("/orders", (req, res) => {
     const bearer = req.headers.authorization;
     if (bearer && bearer.startsWith("Bearer ")) {
@@ -71,6 +74,8 @@ client.connect((err) => {
         });
     }
   });
+
+//for deleting product
   app.get("/admin/deleteProduct/:key", (req, res) => {
     console.log(req.params.key)
     productsCollection.deleteOne({key:req.params.key})
